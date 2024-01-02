@@ -88,16 +88,16 @@ def calculate_moving_average(period, granularity=granularity):
 
 def determine_trend():
     # Calculate Moving Averages and Stochastic Indicator
-    ma_20 = calculate_moving_average(20, "M15")
-    ma_50 = calculate_moving_average(50, "M15")
+    ma_fast = calculate_moving_average(8, "M15")
+    ma_slow = calculate_moving_average(25, "M15")
     stochastic = calculate_stochastic_pandas(14, 3).iloc[-1]
 
     # Determine Trend
-    if ma_20 > ma_50 and stochastic['%K'] > 70:
-        # Uptrend
+    if ma_fast > ma_slow and stochastic['%K'] > 70:
+        # Uptre
         print("Uptrend detected - consider buying EUR/USD")
         return('b')
-    elif ma_20 < ma_50 and stochastic['%K'] < 30:
+    elif ma_fast < ma_slow and stochastic['%K'] < 30:
         # Downtrend
         print("Downtrend detected - consider shorting EUR/USD")
         return('s')

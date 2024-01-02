@@ -3,9 +3,6 @@ import data
 
 import secretsarc
 
-
-
-
 balance = account.account_value
 instrument = "EUR_USD"
 
